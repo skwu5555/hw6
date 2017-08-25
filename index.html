@@ -1,0 +1,96 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>找尋三個(含)以上連續座位</title>
+
+<style>
+td {  
+  width:20px;  
+  height:20px;  
+  background:#FFFF00/* td background color*/
+  color:#F00;  
+}  
+
+<!-- tr {
+	color: #F00;
+} -->
+
+
+th {
+    border: 1px solid black;
+    background: #00003f;
+    color: #cfffff;
+}
+</style>
+
+	
+	
+
+	</head>
+<body>
+  
+  <p>Press the "click" button to find vancant seats (0:vancant; 1:reserved, random number each time). </p>
+  <p>The alert message will show up first before showing the seat map. </p>
+  <p>Press "refresh" button to clean up the screen. </p>
+  <button onclick="matrix()">Click</button>
+  
+  <button type="button" onClick="window.location.reload();">Refresh</button>
+
+  <table border="1" id="keret" </table>
+  <br>
+  <br>
+  <br>
+  	
+</body>
+
+
+<script type="text/javascript">
+function matrix() {
+
+    <!-- myNode.innerHTML = ''; -->
+    var matrix = [];
+    for (var i = 0; i < 1; i++) {
+        matrix[i] = [];
+        for (var j = 0; j <15; j++) {
+            matrix[i][j] = Math.floor(Math.random() * 2);
+        }
+    }
+    for (var i = 0; i < 1; i++) {
+        var row = document.createElement("tr"); 
+        for (var j = 0; j < 15; j++) {
+		
+	
+            var cell = document.createElement("td");
+			
+			if(matrix[0][j] == 0)
+			{
+			
+			
+			 var cell = document.createElement("th");
+			 if(matrix[0][j]==0 && matrix[0][j+1]==0 && matrix[0][j+2]==0)
+			 
+			 {
+			 var results=[];
+			 results.push(matrix[0][j]);
+			 alert("第" + (j+1)+ "," + (j+2)+ "," + (j+3) + "個位置起有三個連續空位");	 
+			 }
+			 
+			
+			}
+			cell.innerHTML = matrix[i][j];
+            row.appendChild(cell); 
+		
+        } 
+       document.getElementById("keret").appendChild(row); 
+
+    }
+	
+
+}
+
+
+
+
+<!-- matrix(); -->
+    </script>
+</html>
